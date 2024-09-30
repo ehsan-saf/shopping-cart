@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { COLORS } from "../Constants/colors";
 import { CART_ICON } from "../assets/icons/svg";
+import PropTypes from "prop-types";
 
-function Header() {
+function Header({ onToggle }) {
   return (
     <Container>
       <Nav>
@@ -11,7 +12,7 @@ function Header() {
           <Item>Home</Item>
           <Item>Products</Item>
           <Item>
-            <CartLink>{CART_ICON}</CartLink>
+            <CartButton onClick={onToggle}>{CART_ICON}</CartButton>
           </Item>
         </Group>
       </Nav>
@@ -21,9 +22,13 @@ function Header() {
 
 export default Header;
 
+Header.propTypes = {
+  onToggle: PropTypes.func,
+};
+
 const Container = styled.header`
   position: sticky;
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
 `;
 
@@ -31,9 +36,11 @@ const Nav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+
+  padding: 5px 15px;
   border: 1px solid ${COLORS.Nav_Border};
   border-radius: 30px;
+
   user-select: none;
 `;
 
@@ -59,10 +66,12 @@ const Item = styled.li`
   }
 `;
 
-const CartLink = styled.a`
+const CartButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   height: 100%;
+  background: none;
+  border: none;
 `;

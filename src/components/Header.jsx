@@ -11,8 +11,8 @@ function Header({ onToggle }) {
         <Group>
           <Item>Home</Item>
           <Item>Products</Item>
-          <Item>
-            <CartButton onClick={onToggle}>{CART_ICON}</CartButton>
+          <Item onClick={onToggle}>
+            <CartButton>{CART_ICON}</CartButton>
           </Item>
         </Group>
       </Nav>

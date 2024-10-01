@@ -78,9 +78,14 @@ const CloseButton = styled.button`
 
 const CheckoutButton = styled.button`
   margin-top: auto;
-  padding: 5px 15px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 8px;
-  color: white;
-  background-color: blue;
+  border-radius: 15px;
+
+  color: hsl(0, 0%, 99%);
+  background-color: ${COLORS.Default_Button};
+
+  &:hover {
+    background-color: ${COLORS.Default_Button_Hover};
+  }
 `;

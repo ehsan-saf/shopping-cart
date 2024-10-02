@@ -29,7 +29,7 @@ Header.propTypes = {
 const Container = styled.header`
   position: sticky;
   max-width: 850px;
-  margin: 0 auto;
+  margin: 0 auto 40px;
 `;
 
 const Nav = styled.nav`

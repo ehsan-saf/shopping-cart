@@ -2,7 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Header from "./components/Header";
 import QuickView from "./components/QuickView";
-import { func } from "prop-types";
+import Main from "./components/Main";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,8 +12,9 @@ function App() {
   }
   return (
     <>
-      <Header onToggle={toggleQuickView} />
       <QuickView isOpen={isOpen} onToggle={toggleQuickView} />
+      <Header onToggle={toggleQuickView} />
+      <Main />
     </>
   );
 }

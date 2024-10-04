@@ -127,9 +127,12 @@ const Title = styled.div`
 `;
 
 const Container = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+
   display: grid;
   justify-content: center;
   justify-items: center;
-  grid-template-columns: repeat(3, 300px);
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
 `;

@@ -12,9 +12,11 @@ function Products() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const controller = new AbortController();
+
     const start = async () => {
       try {
-        const productsArr = await fetchData(URL);
+        const productsArr = await fetchData(URL, controller.signal);
 
         console.log(productsArr[0]);
         setData(productsArr);
@@ -28,6 +30,8 @@ function Products() {
     };
 
     start();
+
+    return () => controller.abort();
   }, []);
 
   return (

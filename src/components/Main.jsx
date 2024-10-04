@@ -1,9 +1,9 @@
-import Categories from "./subComponents/Categories";
+import { Outlet } from "react-router-dom";
 
 function Main() {
   return (
     <main>
-      <Categories />
+      <Outlet />
     </main>
   );
 }

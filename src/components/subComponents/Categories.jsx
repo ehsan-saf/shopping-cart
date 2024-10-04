@@ -1,31 +1,46 @@
 import styled from "styled-components";
 import PropTypes from "prop-types";
+
 import Man_Image from "../../assets/images/man-example.jpg";
 import Woman_Image from "../../assets/images/woman-example.jpg";
 import Accessory_Image from "../../assets/images/accessory-example.jpg";
-import { COLORS } from "../../Constants/colors";
 import { FORWARD_ARROW_ICON } from "../../assets/icons/svg";
+import { COLORS } from "../../Constants/colors";
 
-function Category({ image, title }) {
+import { Link } from "react-router-dom";
+
+function Category({ category, image, title }) {
   return (
-    <SingleCategory>
-      {FORWARD_ARROW_ICON}
-      <Title>{title}</Title>
-      <img src={image} alt="" />
-    </SingleCategory>
+    <Link to={`/products/${category}`}>
+      <SingleCategory>
+        {FORWARD_ARROW_ICON}
+        <Title>{title}</Title>
+        <img src={image} alt="" />
+      </SingleCategory>
+    </Link>
   );
 }
 
 Category.propTypes = {
   image: PropTypes.string,
+  title: PropTypes.string,
+  category: PropTypes.string,
 };
 
 function Categories() {
   return (
     <Container>
-      <Category image={Man_Image} title={"men collection"} />
-      <Category image={Woman_Image} title={"women collection"} />
-      <Category image={Accessory_Image} title={"accessories"} />
+      <Category category={"men"} image={Man_Image} title={"men collection"} />
+      <Category
+        category={"women"}
+        image={Woman_Image}
+        title={"women collection"}
+      />
+      <Category
+        category={"accessory"}
+        image={Accessory_Image}
+        title={"accessories"}
+      />
     </Container>
   );
 }

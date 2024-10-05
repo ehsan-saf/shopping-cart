@@ -1,8 +1,7 @@
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import fetchData from "../../data/fetchRequest";
-
-const URL = `https://fakestoreapi.com/products?limit=20`;
+import getUrl from "../../data/api";
 
 function Products() {
   const { category } = useParams();
@@ -13,6 +12,8 @@ function Products() {
 
   useEffect(() => {
     const controller = new AbortController();
+
+    const URL = getUrl(category);
 
     const start = async () => {
       try {

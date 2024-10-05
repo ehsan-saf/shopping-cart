@@ -1,7 +1,26 @@
+import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import fetchData from "../../data/fetchRequest";
 import getUrl from "../../data/api";
+import PropTypes from "prop-types";
+
+Product.propTypes = {
+  info: PropTypes.object,
+};
+
+function Product({ info }) {
+  return (
+    <Item>
+      <Image>
+        <img src={info.image} alt={info.title} />
+      </Image>
+      <Info>
+        <h3>{info.title}</h3>
+      </Info>
+    </Item>
+  );
+}
 
 function Products() {
   const { category } = useParams();
@@ -42,14 +61,47 @@ function Products() {
       {loading && <h2>Loading........</h2>}
       {error && <h2>There was an error</h2>}
       {data && (
-        <ul>
-          {data.map((item) => {
-            return <li key={item.id}>{item.title}</li>;
+        <Grid>
+          {data.map((info) => {
+            return <Product info={info} key={info.id} />;
           })}
-        </ul>
+        </Grid>
       )}
     </>
   );
 }
 
 export default Products;
+
+const Grid = styled.div`
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  row-gap: 10px;
+`;
+
+const Item = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+`;
+
+const Image = styled.div`
+  width: 200px;
+  height: 200px;
+
+  & img {
+    width: auto;
+    height: 100%;
+    margin: auto;
+  }
+`;
+
+const Info = styled.div`
+  display: flex;
+
+  & h3 {
+    font-size: 1rem;
+  }
+`;

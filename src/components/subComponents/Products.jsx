@@ -77,7 +77,7 @@ const Grid = styled.div`
   display: grid;
   justify-content: center;
   justify-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
   row-gap: 10px;
 `;
 

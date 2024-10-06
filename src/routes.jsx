@@ -1,3 +1,4 @@
+import { element } from "prop-types";
 import App from "./App.jsx";
 import Main from "./components/Main.jsx";
 import Categories from "./components/subComponents/Categories.jsx";

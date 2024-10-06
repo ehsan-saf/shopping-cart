@@ -2,15 +2,22 @@ import styled from "styled-components";
 import { COLORS } from "../Constants/colors";
 import { CART_ICON } from "../assets/icons/svg";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 function Header({ onToggle }) {
   return (
     <Container>
       <Nav>
-        <Logo>Neo</Logo>
+        <Logo>
+          <Link>Neo</Link>
+        </Logo>
         <Group>
-          <Item>Home</Item>
-          <Item>Products</Item>
+          <Item>
+            <Link to={"/"}>Home</Link>
+          </Item>
+          <Item>
+            <Link>Products</Link>
+          </Item>
           <Item onClick={onToggle}>
             <CartButton>{CART_ICON}</CartButton>
           </Item>
@@ -30,6 +37,11 @@ const Container = styled.header`
   position: sticky;
   max-width: 850px;
   margin: 0 auto 40px;
+
+  & a {
+    text-decoration: none;
+    color: inherit;
+  }
 `;
 
 const Nav = styled.nav`
@@ -55,14 +67,19 @@ const Group = styled.ul`
 `;
 
 const Item = styled.li`
-  padding: 10px;
-
   border-radius: 5px;
+  display: flex;
+  align-items: center;
 
   cursor: pointer;
 
   &:hover {
     background-color: ${COLORS.Nav_Item_Hover};
+  }
+
+  & a {
+    display: block;
+    padding: 10px;
   }
 `;
 

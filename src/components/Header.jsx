@@ -16,7 +16,7 @@ function Header({ onToggle }) {
             <Link to={"/"}>Home</Link>
           </Item>
           <Item>
-            <Link>Products</Link>
+            <Link to={"/"}>Products</Link>
           </Item>
           <Item onClick={onToggle}>
             <CartButton>{CART_ICON}</CartButton>

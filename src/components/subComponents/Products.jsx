@@ -57,7 +57,6 @@ function Products() {
   return (
     <>
       <h1>Products Page, Category: {category}</h1>
-      <Link to={"/"}>Go back to home</Link>
       {loading && <h2>Loading........</h2>}
       {error && <h2>There was an error</h2>}
       {data && (
@@ -76,15 +75,31 @@ export default Products;
 const Grid = styled.div`
   display: grid;
   justify-content: center;
-  justify-items: center;
   grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
+  column-gap: 10px;
   row-gap: 10px;
 `;
 
 const Item = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+
+  padding: 10px;
+  border: 1px solid hsl(0 0% 94%);
+  border-radius: 10px;
+  background-color: white;
+
+  cursor: pointer;
+  transition: 0.2s all;
+
+  &:hover {
+    transform: scale(1.04);
+    z-index: 1;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
 `;
 
 const Image = styled.div`

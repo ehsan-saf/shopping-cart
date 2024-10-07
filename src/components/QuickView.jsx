@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 function QuickView({ isOpen, onToggle }) {
   return (
     <>
-      {/* <Background isOpen={isOpen} /> */}
       <Container isOpen={isOpen}>
         <CloseContainer>
           <CloseButton onClick={onToggle}>{CLOSE_ICON}</CloseButton>
@@ -40,7 +39,7 @@ const Container = styled.div`
   position: fixed;
   top: 20px;
   right: 0;
-  z-index: 1;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;

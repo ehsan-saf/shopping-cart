@@ -11,7 +11,7 @@ Product.propTypes = {
 
 function Product({ info }) {
   return (
-    <Item>
+    <Item to={`/product/id=${info.id}`} state={info}>
       <Image>
         <img src={info.image} alt={info.title} />
       </Image>
@@ -80,12 +80,15 @@ const Grid = styled.div`
   row-gap: 10px;
 `;
 
-const Item = styled.div`
+const Item = styled(Link)`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
+
+  color: inherit;
+  text-decoration: none;
 
   padding: 10px;
   border: 1px solid hsl(0 0% 94%);

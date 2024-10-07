@@ -3,6 +3,7 @@ import App from "./App.jsx";
 import Main from "./components/Main.jsx";
 import Categories from "./components/subComponents/Categories.jsx";
 import Products from "./components/subComponents/Products.jsx";
+import ProductPage from "./components/subComponents/ProductPage.jsx";
 
 const routes = [
   {
@@ -20,6 +21,10 @@ const routes = [
           {
             path: "products/:category",
             element: <Products />,
+          },
+          {
+            path: "product/:id",
+            element: <ProductPage />,
           },
         ],
       },

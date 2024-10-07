@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { Link, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import fetchData from "../../data/fetchRequest";
 import getUrl from "../../data/api";
-import PropTypes from "prop-types";
 
 Product.propTypes = {
   info: PropTypes.object,
@@ -78,6 +78,12 @@ const Grid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
   column-gap: 10px;
   row-gap: 10px;
+
+  @media (max-width: 550px) {
+    grid-template-columns: 1fr;
+    max-width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 const Item = styled(Link)`

@@ -47,6 +47,10 @@ const Info = styled.div`
 const Image = styled.img`
   max-width: 250px;
   height: auto;
+
+  @media (max-width: 600px) {
+    max-width: 200px;
+  }
 `;
 
 const AddButton = styled.button`

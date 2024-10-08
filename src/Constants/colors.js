@@ -5,4 +5,5 @@ export const COLORS = {
   Default_Button: "hsl(199 89% 48%)",
   Default_Button_Hover: "hsl(201 96% 32%)",
   Category_Title: "hsl(240 4% 46%)",
+  Bottom_Border: "hsl(0 0% 60%)",
 };

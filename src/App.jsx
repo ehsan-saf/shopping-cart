@@ -3,18 +3,22 @@ import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import QuickView from "./components/QuickView";
+import CartContext from "./contexts/cartContext";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
 
   function toggleQuickView() {
     setIsOpen(!isOpen);
   }
   return (
     <>
-      <QuickView isOpen={isOpen} onToggle={toggleQuickView} />
-      <Header onToggle={toggleQuickView} />
-      <Outlet />
+      <CartContext.Provider value={{ cartItems, setCartItems }}>
+        <QuickView isOpen={isOpen} onToggle={toggleQuickView} />
+        <Header onToggle={toggleQuickView} />
+        <Outlet />
+      </CartContext.Provider>
     </>
   );
 }

@@ -1,19 +1,35 @@
 import styled from "styled-components";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { COLORS } from "../../Constants/colors";
+import { useContext } from "react";
+import CartContext from "../../contexts/cartContext";
 
 function ProductPage() {
-  const { id } = useParams();
   const location = useLocation();
+  const { cartItems, setCartItems } = useContext(CartContext);
 
   const data = location.state;
+
+  function addToCart(product) {
+    const index = cartItems.findIndex((item) => item.id === product.id);
+    let tempArr = [...cartItems];
+    console.log(tempArr);
+
+    if (index >= 0) {
+      tempArr[index].quantity += 1;
+    } else {
+      tempArr.push({ ...product, quantity: 1 });
+    }
+
+    setCartItems(tempArr);
+  }
 
   return (
     <Container>
       <Info>
         <h3>{data.title}</h3>
         <p>$ {data.price}</p>
-        <AddButton>Add to cart</AddButton>
+        <AddButton onClick={() => addToCart(data)}>Add to cart</AddButton>
       </Info>
       <Image src={data.image} alt={data.title} />
     </Container>

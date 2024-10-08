@@ -2,14 +2,37 @@ import styled from "styled-components";
 import { COLORS } from "../Constants/colors";
 import { CLOSE_ICON } from "../assets/icons/svg";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import CartContext from "../contexts/cartContext";
+
+function Item({ info }) {
+  return (
+    <ItemContainer>
+      <h3>{info.title}</h3>
+      <p>{info.quantity}</p>
+      <img src={info.image} alt={info.title} />
+    </ItemContainer>
+  );
+}
+
+Item.propTypes = {
+  info: PropTypes.object,
+};
 
 function QuickView({ isOpen, onToggle }) {
+  const { cartItems, setCartItems } = useContext(CartContext);
+
   return (
     <>
       <Container isOpen={isOpen}>
         <CloseContainer>
           <CloseButton onClick={onToggle}>{CLOSE_ICON}</CloseButton>
         </CloseContainer>
+        <List>
+          {cartItems.map((item) => (
+            <Item key={item.id} info={item} />
+          ))}
+        </List>
         <CheckoutButton>Go to checkout</CheckoutButton>
       </Container>
     </>
@@ -73,6 +96,29 @@ const CloseButton = styled.button`
 
   &:hover svg {
     fill: red;
+  }
+`;
+
+const List = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ItemContainer = styled.div`
+  display: flex;
+  padding: 10px 5px;
+
+  & h3 {
+    font-size: 0.84rem;
+  }
+
+  & img {
+    max-width: 50px;
+    height: auto;
+  }
+
+  &:not(:last-child) {
+    border-bottom: 2px solid ${COLORS.Bottom_Border};
   }
 `;
 

@@ -73,10 +73,12 @@ const Number = styled.input`
     appearance: textfield;
   }
 
-  width: 40px;
-  padding: 0 15px;
+  max-width: 50px;
+
   border-radius: 7px;
   border: 1px solid hsl(0 0% 70%);
+
+  font-size: 0.9rem;
   text-align: center;
 `;
 
@@ -84,8 +86,8 @@ const Minus = styled.button`
   display: grid;
   justify-content: center;
   align-content: center;
-  width: 20px;
-  height: 20px;
+  width: 19px;
+  height: 19px;
   padding: 0;
   background: white;
   border-radius: 0 0 5px 5px;

@@ -11,7 +11,7 @@ function Item({ info }) {
     <ItemContainer>
       <div>
         <h3>{info.title}</h3>
-        <p>Price: ${info.price * info.quantity}</p>
+        <p>Price: ${(info.price * info.quantity).toFixed(2)}</p>
         <NumberInput productId={info.id} />
       </div>
       <img src={info.image} alt={info.title} />
@@ -86,11 +86,14 @@ const Container = styled.div`
   border-radius: 10px 0 0 10px;
 
   padding: 10px;
+  overflow-y: auto;
 
   transform: translateX(${(el) => (el.open ? "0%" : "100%")});
 
   transition: 0.5s transform;
 `;
+
+const InnerContent = styled.div``;
 
 const CloseContainer = styled.div`
   display: flex;
@@ -121,13 +124,13 @@ const ItemContainer = styled.div`
   }
 
   & img {
-    max-width: 50px;
-    height: auto;
+    width: auto;
+    max-height: 80px;
     margin-left: auto;
   }
 
   &:not(:last-child) {
-    border-bottom: 2px solid ${COLORS.Bottom_Border};
+    border-bottom: 1px solid ${COLORS.Bottom_Border};
   }
 `;
 

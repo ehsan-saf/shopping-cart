@@ -4,12 +4,15 @@ import { CLOSE_ICON } from "../assets/icons/svg";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 import CartContext from "../contexts/cartContext";
+import NumberInput from "./tools/NumberInput";
 
 function Item({ info }) {
   return (
     <ItemContainer>
-      <h3>{info.title}</h3>
-      <p>{info.quantity}</p>
+      <div>
+        <h3>{info.title}</h3>
+        <NumberInput productId={info.id} />
+      </div>
       <img src={info.image} alt={info.title} />
     </ItemContainer>
   );
@@ -19,12 +22,12 @@ Item.propTypes = {
   info: PropTypes.object,
 };
 
-function QuickView({ isOpen, onToggle }) {
+function QuickView({ open, onToggle }) {
   const { cartItems, setCartItems } = useContext(CartContext);
 
   return (
     <>
-      <Container isOpen={isOpen}>
+      <Container open={open}>
         <CloseContainer>
           <CloseButton onClick={onToggle}>{CLOSE_ICON}</CloseButton>
         </CloseContainer>
@@ -42,12 +45,12 @@ function QuickView({ isOpen, onToggle }) {
 export default QuickView;
 
 QuickView.propTypes = {
-  isOpen: PropTypes.bool,
+  open: PropTypes.bool,
   onToggle: PropTypes.func,
 };
 
 const Background = styled.div`
-  display: ${(el) => (el.isOpen ? "block" : "none")};
+  display: ${(el) => (el.open ? "block" : "none")};
   position: absolute;
   top: 0;
   left: 0;
@@ -79,7 +82,7 @@ const Container = styled.div`
 
   padding: 10px;
 
-  transform: translateX(${(el) => (el.isOpen ? "0%" : "100%")});
+  transform: translateX(${(el) => (el.open ? "0%" : "100%")});
 
   transition: 0.5s transform;
 `;

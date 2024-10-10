@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <CartContext.Provider value={{ cartItems, setCartItems }}>
-        <QuickView isOpen={isOpen} onToggle={toggleQuickView} />
+        <QuickView open={isOpen} onToggle={toggleQuickView} />
         <Header onToggle={toggleQuickView} />
         <Outlet />
       </CartContext.Provider>

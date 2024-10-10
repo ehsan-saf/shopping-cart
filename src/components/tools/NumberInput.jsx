@@ -33,9 +33,20 @@ function NumberInput({ productId }) {
 
   return (
     <Container>
-      <Minus onClick={handleMinus}>{Minus_Icon}</Minus>
-      <Number>{product.quantity}</Number>
-      <Plus onClick={handlePlus}>{Plus_Icon}</Plus>
+      <Number
+        onChange={(e) => updateQuantity(parseInt(e.target.value))}
+        value={product.quantity}
+        type="number"
+      ></Number>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Plus onClick={handlePlus}>{Plus_Icon}</Plus>
+        <Minus onClick={handleMinus}>{Minus_Icon}</Minus>
+      </div>
     </Container>
   );
 }
@@ -49,10 +60,24 @@ const Container = styled.div`
   margin-top: 7px;
 `;
 
-const Number = styled.div`
-  padding: 0 20px;
-  border-radius: 10px;
+const Number = styled.input`
+  /* Chrome, Safari, Edge, Opera */
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  & {
+    appearance: textfield;
+  }
+
+  width: 40px;
+  padding: 0 15px;
+  border-radius: 7px;
   border: 1px solid hsl(0 0% 70%);
+  text-align: center;
 `;
 
 const Minus = styled.button`
@@ -63,7 +88,7 @@ const Minus = styled.button`
   height: 20px;
   padding: 0;
   background: white;
-  border-radius: 10px;
+  border-radius: 0 0 5px 5px;
   border: none;
 
   background-color: #e11d48;
@@ -75,5 +100,6 @@ const Minus = styled.button`
 `;
 
 const Plus = styled(Minus)`
+  border-radius: 5px 5px 0 0;
   background-color: #059669;
 `;

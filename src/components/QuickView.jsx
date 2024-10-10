@@ -11,6 +11,7 @@ function Item({ info }) {
     <ItemContainer>
       <div>
         <h3>{info.title}</h3>
+        <p>Price: ${info.price * info.quantity}</p>
         <NumberInput productId={info.id} />
       </div>
       <img src={info.image} alt={info.title} />
@@ -24,6 +25,9 @@ Item.propTypes = {
 
 function QuickView({ open, onToggle }) {
   const { cartItems, setCartItems } = useContext(CartContext);
+  const totalPrice = cartItems
+    .reduce((total, item) => total + item.price * item.quantity, 0)
+    .toFixed(2);
 
   return (
     <>
@@ -36,6 +40,7 @@ function QuickView({ open, onToggle }) {
             <Item key={item.id} info={item} />
           ))}
         </List>
+        <Total>Total ${totalPrice}</Total>
         <CheckoutButton>Go to checkout</CheckoutButton>
       </Container>
     </>
@@ -126,8 +131,16 @@ const ItemContainer = styled.div`
   }
 `;
 
+const Total = styled.div`
+  margin: auto auto 10px;
+  padding: 10px 15px;
+  width: 85%;
+  border: 1px solid hsl(0 0% 70%);
+  border-radius: 20px 4px;
+  text-align: center;
+`;
+
 const CheckoutButton = styled.button`
-  margin-top: auto;
   padding: 10px 15px;
   border: none;
   border-radius: 15px;

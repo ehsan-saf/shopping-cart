@@ -44,6 +44,7 @@ export default NumberInput;
 
 const Container = styled.div`
   display: flex;
+  align-items: center;
   gap: 5px;
   margin-top: 7px;
 `;
@@ -57,8 +58,9 @@ const Number = styled.div`
 const Minus = styled.button`
   display: grid;
   justify-content: center;
-  width: 25px;
-  height: 25px;
+  align-content: center;
+  width: 20px;
+  height: 20px;
   padding: 0;
   background: white;
   border-radius: 10px;

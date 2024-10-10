@@ -118,6 +118,7 @@ const ItemContainer = styled.div`
   & img {
     max-width: 50px;
     height: auto;
+    margin-left: auto;
   }
 
   &:not(:last-child) {

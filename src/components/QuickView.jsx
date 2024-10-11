@@ -11,7 +11,9 @@ function Item({ info }) {
     <ItemContainer>
       <div>
         <h3>{info.title}</h3>
-        <p>Price: ${(info.price * info.quantity).toFixed(2)}</p>
+        <p style={{ marginTop: "10px" }}>
+          Price: ${(info.price * info.quantity).toFixed(2)}
+        </p>
         <NumberInput productId={info.id} />
       </div>
       <img src={info.image} alt={info.title} />

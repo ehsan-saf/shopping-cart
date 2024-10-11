@@ -37,3 +37,16 @@ h6 {
 #__next {
   isolation: isolate;
 }
+
+@font-face {
+  font-family: "lato";
+  src: url("./assets/fonts/Lato-Regular.ttf");
+  font-weight: 500;
+  font-size: normal;
+  font-display: swap;
+}
+
+html,
+body {
+  font-family: "lato", "Courier New", Courier, monospace;
+}

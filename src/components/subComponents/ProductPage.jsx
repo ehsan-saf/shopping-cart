@@ -1,19 +1,23 @@
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
 import { COLORS } from "../../Constants/colors";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartContext from "../../contexts/cartContext";
+import { createPortal } from "react-dom";
+import Alert from "../popups/Alert";
+import { func } from "prop-types";
 
 function ProductPage() {
   const location = useLocation();
   const { cartItems, setCartItems } = useContext(CartContext);
+
+  const [showAlert, setShowAlert] = useState(false);
 
   const data = location.state;
 
   function addToCart(product) {
     const index = cartItems.findIndex((item) => item.id === product.id);
     let tempArr = [...cartItems];
-    console.log(tempArr);
 
     if (index >= 0) {
       tempArr[index].quantity += 1;
@@ -24,16 +28,29 @@ function ProductPage() {
     setCartItems(tempArr);
   }
 
+  function handleAdd(product) {
+    addToCart(product);
+    setShowAlert(true);
+    setTimeout(() => {
+      setShowAlert(false);
+    }, 3000);
+  }
+
   return (
     <Container>
       <Info>
         <h3>{data.title}</h3>
         <p>$ {data.price}</p>
-        <AddButton onClick={() => addToCart(data)}>Add to cart</AddButton>
+        <AddButton onClick={() => handleAdd(data)}>Add to cart</AddButton>
       </Info>
       <div style={{ width: "200px" }}>
         <Image src={data.image} alt={data.title} />
       </div>
+      {showAlert &&
+        createPortal(
+          <Alert text={"added to cart !"} />,
+          document.getElementById("root")
+        )}
     </Container>
   );
 }

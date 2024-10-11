@@ -31,7 +31,9 @@ function ProductPage() {
         <p>$ {data.price}</p>
         <AddButton onClick={() => addToCart(data)}>Add to cart</AddButton>
       </Info>
-      <Image src={data.image} alt={data.title} />
+      <div style={{ width: "200px" }}>
+        <Image src={data.image} alt={data.title} />
+      </div>
     </Container>
   );
 }
@@ -60,14 +62,7 @@ const Info = styled.div`
   }
 `;
 
-const Image = styled.img`
-  max-width: 250px;
-  height: auto;
-
-  @media (max-width: 600px) {
-    max-width: 200px;
-  }
-`;
+const Image = styled.img``;
 
 const AddButton = styled.button`
   padding: 10px;

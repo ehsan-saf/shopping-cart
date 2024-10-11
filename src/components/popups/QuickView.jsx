@@ -1,10 +1,10 @@
 import styled from "styled-components";
-import { COLORS } from "../Constants/colors";
-import { CLOSE_ICON } from "../assets/icons/svg";
+import { COLORS } from "../../Constants/colors";
+import { CLOSE_ICON } from "../../assets/icons/svg";
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import CartContext from "../contexts/cartContext";
-import NumberInput from "./tools/NumberInput";
+import CartContext from "../../contexts/cartContext";
+import NumberInput from "../tools/NumberInput";
 
 function Item({ info }) {
   return (
@@ -16,7 +16,9 @@ function Item({ info }) {
         </p>
         <NumberInput productId={info.id} />
       </div>
-      <img src={info.image} alt={info.title} />
+      <div style={{ width: "100px", marginLeft: "auto" }}>
+        <img src={info.image} alt={info.title} />
+      </div>
     </ItemContainer>
   );
 }
@@ -123,12 +125,6 @@ const ItemContainer = styled.div`
 
   & h3 {
     font-size: 0.84rem;
-  }
-
-  & img {
-    width: auto;
-    max-height: 80px;
-    margin-left: auto;
   }
 
   &:not(:last-child) {

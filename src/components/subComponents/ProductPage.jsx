@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import { useContext, useState } from "react";
+import { createPortal } from "react-dom";
 import { useLocation } from "react-router-dom";
 import { COLORS } from "../../Constants/colors";
-import { useContext, useState } from "react";
 import CartContext from "../../contexts/cartContext";
-import { createPortal } from "react-dom";
 import Alert from "../popups/Alert";
 
 function ProductPage() {

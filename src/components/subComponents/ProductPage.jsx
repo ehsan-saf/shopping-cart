@@ -48,7 +48,7 @@ function ProductPage() {
       </div>
       {showAlert &&
         createPortal(
-          <Alert text={"added to cart !"} />,
+          <Alert text={"added to cart"} />,
           document.getElementById("root")
         )}
     </Container>

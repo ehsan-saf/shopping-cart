@@ -16,7 +16,7 @@ function Item({ info }) {
         </p>
         <NumberInput productId={info.id} />
       </div>
-      <div style={{ width: "100px", marginLeft: "auto" }}>
+      <div style={{ width: "80px", marginLeft: "auto" }}>
         <img src={info.image} alt={info.title} />
       </div>
     </ItemContainer>
@@ -97,8 +97,6 @@ const Container = styled.div`
   transition: 0.5s transform;
 `;
 
-const InnerContent = styled.div``;
-
 const CloseContainer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -127,8 +125,10 @@ const ItemContainer = styled.div`
     font-size: 0.84rem;
   }
 
-  &:not(:last-child) {
-    border-bottom: 1px solid ${COLORS.Bottom_Border};
+  border-bottom: 1px solid ${COLORS.Bottom_Border};
+
+  &:last-child {
+    margin-bottom: 10px;
   }
 `;
 

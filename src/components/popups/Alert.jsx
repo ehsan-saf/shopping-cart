@@ -8,10 +8,13 @@ Alert.propTypes = {
 
 function Alert({ text }) {
   const [show, setShow] = useState(true);
+
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setShow(false);
     }, 3000);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
@@ -24,7 +27,6 @@ function Alert({ text }) {
 export default Alert;
 
 const Container = styled.div`
-  display: ${(p) => (p.show ? "block" : "none")};
   position: fixed;
   right: 0;
   left: 0;
@@ -40,15 +42,22 @@ const Container = styled.div`
   color: hsl(0, 0%, 96%);
   background-color: #10b981;
 
-  opacity: 0;
-  transform: translateY(15px);
+  opacity: ${(p) => (p.show ? "0" : "1")};
+  transform: translateY(${(p) => (p.show ? "15px" : "0")});
 
-  animation: fade-in 0.4s 1 forwards;
+  animation: ${(p) => (p.show ? "fade-in" : "fade-out")} 0.4s 1 forwards;
 
   @keyframes fade-in {
     100% {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-out {
+    100% {
+      opacity: 0;
+      transform: translateY(15px);
     }
   }
 `;

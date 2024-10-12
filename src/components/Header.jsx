@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { COLORS } from "../Constants/colors";
-import { CART_ICON } from "../assets/icons/svg";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { COLORS } from "../Constants/colors";
+import { CART_ICON } from "../assets/icons/svg";
 
 function Header({ onToggle }) {
   return (

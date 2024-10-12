@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 import CartContext from "../../contexts/cartContext";
 import NumberInput from "../tools/NumberInput";
+import { Link } from "react-router-dom";
 
 function Item({ info }) {
   return (
@@ -45,7 +46,7 @@ function QuickView({ open, onToggle }) {
           ))}
         </List>
         <Total>Total ${totalPrice}</Total>
-        <CheckoutButton>Go to checkout</CheckoutButton>
+        <CheckoutButton to={"shoppingcart"}>Go to checkout</CheckoutButton>
       </Container>
     </>
   );
@@ -141,7 +142,10 @@ const Total = styled.div`
   text-align: center;
 `;
 
-const CheckoutButton = styled.button`
+const CheckoutButton = styled(Link)`
+  text-decoration: none;
+  text-align: center;
+
   padding: 10px 15px;
   border: none;
   border-radius: 15px;

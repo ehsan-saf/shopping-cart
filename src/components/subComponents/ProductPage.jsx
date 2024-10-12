@@ -5,7 +5,6 @@ import { useContext, useState } from "react";
 import CartContext from "../../contexts/cartContext";
 import { createPortal } from "react-dom";
 import Alert from "../popups/Alert";
-import { func } from "prop-types";
 
 function ProductPage() {
   const location = useLocation();

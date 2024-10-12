@@ -28,7 +28,7 @@ Item.propTypes = {
 };
 
 function QuickView({ open, onToggle }) {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   const totalPrice = cartItems
     .reduce((total, item) => total + item.price * item.quantity, 0)
     .toFixed(2);
@@ -58,17 +58,17 @@ QuickView.propTypes = {
   onToggle: PropTypes.func,
 };
 
-const Background = styled.div`
-  display: ${(el) => (el.open ? "block" : "none")};
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100svw;
-  height: 100svh;
-  opacity: 0.9;
-  background-color: ${COLORS.Modal_Bg};
-  filter: blur(10px);
-`;
+// const Background = styled.div`
+//   display: ${(el) => (el.open ? "block" : "none")};
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100svw;
+//   height: 100svh;
+//   opacity: 0.9;
+//   background-color: ${COLORS.Modal_Bg};
+//   filter: blur(10px);
+// `;
 
 const Container = styled.div`
   position: fixed;

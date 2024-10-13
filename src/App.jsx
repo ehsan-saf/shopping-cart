@@ -13,14 +13,18 @@ function App() {
     setIsOpen(!isOpen);
   }
   return (
-    <>
+    <Container>
       <CartContext.Provider value={{ cartItems, setCartItems }}>
         <QuickView open={isOpen} onToggle={toggleQuickView} />
         <Header onToggle={toggleQuickView} />
         <Outlet />
       </CartContext.Provider>
-    </>
+    </Container>
   );
 }
 
 export default App;
+
+const Container = styled.div`
+  padding: 10px 30px;
+`;

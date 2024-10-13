@@ -6,6 +6,7 @@ import { useContext } from "react";
 import CartContext from "../../contexts/cartContext";
 import NumberInput from "../tools/NumberInput";
 import { Link } from "react-router-dom";
+import { calculateTotal } from "../../Utility/Price";
 
 function Item({ info }) {
   return (
@@ -30,9 +31,7 @@ Item.propTypes = {
 
 function QuickView({ open, onToggle }) {
   const { cartItems } = useContext(CartContext);
-  const totalPrice = cartItems
-    .reduce((total, item) => total + item.price * item.quantity, 0)
-    .toFixed(2);
+  const totalPrice = calculateTotal(cartItems);
 
   return (
     <>

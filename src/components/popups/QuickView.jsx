@@ -7,6 +7,8 @@ import CartContext from "../../contexts/cartContext";
 import NumberInput from "../tools/NumberInput";
 import { Link } from "react-router-dom";
 import { calculateTotal } from "../../Utility/Price";
+import ImageWrapper from "../tools/ImageWrapper";
+import DeleteButton from "../tools/DeleteButton";
 
 function Item({ info }) {
   return (
@@ -17,10 +19,11 @@ function Item({ info }) {
           Price: ${(info.price * info.quantity).toFixed(2)}
         </p>
         <NumberInput productId={info.id} />
+        <DeleteButton id={info.id} />
       </div>
-      <div style={{ width: "80px", marginLeft: "auto" }}>
+      <ImageWrapper width={60} height={60}>
         <img src={info.image} alt={info.title} />
-      </div>
+      </ImageWrapper>
     </ItemContainer>
   );
 }

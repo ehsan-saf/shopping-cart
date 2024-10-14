@@ -5,6 +5,7 @@ import CartContext from "../contexts/cartContext";
 import { COLORS } from "../Constants/colors";
 import NumberInput from "./tools/NumberInput";
 import { calculateTotal } from "../Utility/Price";
+import ImageWrapper from "./tools/ImageWrapper";
 
 Item.propTypes = {
   info: PropTypes.object,
@@ -20,16 +21,9 @@ function Item({ info }) {
         </p>
         <NumberInput productId={info.id} />
       </div>
-      <div
-        style={{
-          width: "100px",
-          marginLeft: "auto",
-          display: "grid",
-          placeContent: "center",
-        }}
-      >
+      <ImageWrapper width={70} height={70}>
         <img src={info.image} alt={info.title} />
-      </div>
+      </ImageWrapper>
     </ItemContainer>
   );
 }

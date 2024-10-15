@@ -6,6 +6,7 @@ import { COLORS } from "../Constants/colors";
 import NumberInput from "./tools/NumberInput";
 import { calculateTotal } from "../Utility/Price";
 import ImageWrapper from "./tools/ImageWrapper";
+import DeleteButton from "./tools/DeleteButton";
 
 Item.propTypes = {
   info: PropTypes.object,
@@ -20,6 +21,7 @@ function Item({ info }) {
           Price: ${(info.price * info.quantity).toFixed(2)}
         </p>
         <NumberInput productId={info.id} />
+        <DeleteButton id={info.id} />
       </div>
       <ImageWrapper width={70} height={70}>
         <img src={info.image} alt={info.title} />

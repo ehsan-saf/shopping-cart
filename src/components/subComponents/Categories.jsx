@@ -59,11 +59,16 @@ const SingleCategory = styled.button`
   cursor: pointer;
 
   & img {
-    width: auto;
-    height: 350px;
-
+    object-fit: cover;
+    max-height: 100%;
     border-radius: 10px;
     will-change: filter;
+  }
+
+  @media (max-width: 650px) {
+    & img {
+      max-width: 300px;
+    }
   }
 
   &:hover img {
@@ -127,12 +132,15 @@ const Title = styled.div`
 `;
 
 const Container = styled.div`
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 
   display: grid;
-  justify-content: center;
   justify-items: center;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
+
+  @media (max-width: 650px) {
+    grid-template-columns: 1fr;
+  }
 `;

@@ -76,7 +76,7 @@ const Info = styled.div`
   gap: 10px;
 
   & h3 {
-    max-width: 300px;
+    width: 250px;
     font-size: 1.1rem;
     align-self: stretch;
   }
@@ -86,6 +86,10 @@ const Info = styled.div`
     border-radius: 6px;
     border: 2px solid hsl(0 0% 75%);
     text-align: center;
+  }
+
+  @media (max-width: 600px) {
+    margin: 0 auto;
   }
 `;
 

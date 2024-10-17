@@ -39,7 +39,7 @@ function ProductPage() {
     <Container>
       <Info>
         <h3>{data.title}</h3>
-        <p>$ {data.price}</p>
+        <p className="price">Price: $ {data.price}</p>
         <AddButton onClick={() => handleAdd(data)}>Add to cart</AddButton>
       </Info>
       <div style={{ width: "200px" }}>
@@ -65,16 +65,27 @@ const Container = styled.div`
   @media (max-width: 600px) {
     flex-direction: column-reverse;
     align-items: center;
+    gap: 20px;
   }
 `;
 
 const Info = styled.div`
   display: flex;
   flex-direction: column;
+  align-self: flex-start;
+  gap: 10px;
 
   & h3 {
     max-width: 300px;
     font-size: 1.1rem;
+    align-self: stretch;
+  }
+
+  & .price {
+    padding: 6px;
+    border-radius: 6px;
+    border: 2px solid hsl(0 0% 75%);
+    text-align: center;
   }
 `;
 

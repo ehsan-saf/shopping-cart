@@ -42,8 +42,10 @@ function Products() {
         setData(productsArr);
         setError(null);
       } catch (err) {
-        setError(err.message);
-        setData(null);
+        if (error.name !== "AbortError") {
+          setError(err.message);
+          setData(null);
+        }
       } finally {
         setLoading(false);
       }
@@ -52,7 +54,7 @@ function Products() {
     start();
 
     return () => controller.abort();
-  }, []);
+  }, [category]);
 
   return (
     <>

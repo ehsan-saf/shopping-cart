@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import fetchData from "../../data/fetchRequest";
 import getUrl from "../../data/api";
+import Loading from "../popups/Loading";
 
 Product.propTypes = {
   info: PropTypes.object,
@@ -26,8 +27,9 @@ function Products() {
   const { category } = useParams();
 
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
+  console.log(`State : ${loading}`);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -35,19 +37,22 @@ function Products() {
     const URL = getUrl(category);
 
     const start = async () => {
+      setLoading(true);
+
       try {
         const productsArr = await fetchData(URL, controller.signal);
-
+        console.log(`useEffect : ${loading}`);
         console.log(productsArr[0]);
+
         setData(productsArr);
         setError(null);
+        setLoading(false);
       } catch (err) {
         if (error.name !== "AbortError") {
           setError(err.message);
           setData(null);
+          setLoading(false);
         }
-      } finally {
-        setLoading(false);
       }
     };
 
@@ -59,7 +64,7 @@ function Products() {
   return (
     <>
       <h1>Products Page, Category: {category}</h1>
-      {loading && <h2>Loading........</h2>}
+      {loading && <Loading />}
       {error && <h2>There was an error</h2>}
       {data && (
         <Grid>

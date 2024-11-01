@@ -62,9 +62,19 @@ function Products() {
   }, [category]);
 
   return (
-    <>
-      <h1>Products Page, Category: {category}</h1>
-      {loading && <Loading />}
+    <Container>
+      <div
+        style={{
+          alignSelf: "center",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px",
+          alignItems: "center",
+        }}
+      >
+        <h1>Products Page, Category: {category}</h1>
+        {loading && <Loading />}
+      </div>
       {error && <h2>There was an error</h2>}
       {data && (
         <Grid>
@@ -73,11 +83,17 @@ function Products() {
           })}
         </Grid>
       )}
-    </>
+    </Container>
   );
 }
 
 export default Products;
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+`;
 
 const Grid = styled.div`
   display: grid;

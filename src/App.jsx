@@ -13,13 +13,13 @@ function App() {
     setIsOpen(!isOpen);
   }
   return (
-    <Container>
-      <CartContext.Provider value={{ cartItems, setCartItems }}>
+    <CartContext.Provider value={{ cartItems, setCartItems }}>
+      <Container>
         <QuickView open={isOpen} onToggle={toggleQuickView} />
         <Header onToggle={toggleQuickView} />
         <Outlet />
-      </CartContext.Provider>
-    </Container>
+      </Container>
+    </CartContext.Provider>
   );
 }
 

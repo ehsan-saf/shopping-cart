@@ -21,7 +21,11 @@ function Item({ info }) {
         <NumberInput productId={info.id} />
         <DeleteButton id={info.id} />
       </div>
-      <ImageWrapper width={60} height={60}>
+      <ImageWrapper
+        width={60}
+        height={60}
+        customeStyle={{ margin: "auto 0 auto auto" }}
+      >
         <img src={info.image} alt={info.title} />
       </ImageWrapper>
     </ItemContainer>

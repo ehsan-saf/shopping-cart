@@ -3,18 +3,20 @@ import PropTypes from "prop-types";
 ImageWrapper.propTypes = {
   width: PropTypes.number,
   height: PropTypes.height,
+  customeStyle: PropTypes.object,
   children: PropTypes.element,
 };
 
-function ImageWrapper({ width, height, children }) {
+function ImageWrapper({ width, height, customeStyle, children }) {
   return (
     <div
       style={{
         width: `${width}px`,
         height: `${height}px`,
-        margin: "auto 0 auto auto",
-        display: "grid",
-        placeContent: "center",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        ...customeStyle,
       }}
     >
       {children}

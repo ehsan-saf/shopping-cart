@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import { COLORS } from "../../Constants/colors";
 import CartContext from "../../contexts/cartContext";
 import Alert from "../popups/Alert";
+import ImageWrapper from "../tools/ImageWrapper";
 
 function ProductPage() {
   const location = useLocation();
@@ -42,9 +43,10 @@ function ProductPage() {
         <p className="price">Price: $ {data.price}</p>
         <AddButton onClick={() => handleAdd(data)}>Add to cart</AddButton>
       </Info>
-      <div style={{ width: "200px" }}>
-        <Image src={data.image} alt={data.title} />
-      </div>
+      <ImageWrapper width={220} height={220}>
+        <img src={data.image} alt={data.title} style={{ height: "100%" }} />
+      </ImageWrapper>
+
       {showAlert &&
         createPortal(
           <Alert text={"added to cart"} />,
@@ -92,8 +94,6 @@ const Info = styled.div`
     margin: 0 auto;
   }
 `;
-
-const Image = styled.img``;
 
 const AddButton = styled.button`
   padding: 10px;

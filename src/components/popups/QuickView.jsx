@@ -38,7 +38,7 @@ function QuickView({ open, onToggle }) {
 
   return (
     <>
-      <Container open={open}>
+      <Container open={open} data-testid="quickview">
         <CloseContainer>
           <CloseButton onClick={onToggle}>{CLOSE_ICON}</CloseButton>
         </CloseContainer>

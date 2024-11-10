@@ -18,7 +18,7 @@ function Header({ onToggle }) {
           <Item>
             <Link to={"/products/all"}>Products</Link>
           </Item>
-          <Item onClick={onToggle}>
+          <Item onClick={onToggle} data-testid="cartButton">
             <CartButton>{CART_ICON}</CartButton>
           </Item>
         </Group>

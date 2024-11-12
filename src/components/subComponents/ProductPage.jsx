@@ -11,9 +11,24 @@ function ProductPage() {
   const location = useLocation();
   const { cartItems, setCartItems } = useContext(CartContext);
 
-  const [showAlert, setShowAlert] = useState(false);
+  const [alerts, setAlerts] = useState([]);
 
   const data = location.state;
+
+  function addAlert() {
+    const newAlert = {
+      id: Date.now(),
+      message: "Added to cart",
+    };
+
+    setAlerts([...alerts, newAlert]);
+
+    setTimeout(() => {
+      setAlerts((prevAlerts) =>
+        prevAlerts.filter((alert) => alert.id !== newAlert.id)
+      );
+    }, 3500);
+  }
 
   function addToCart(product) {
     const index = cartItems.findIndex((item) => item.id === product.id);
@@ -30,10 +45,7 @@ function ProductPage() {
 
   function handleAdd(product) {
     addToCart(product);
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-    }, 4000);
+    addAlert();
   }
 
   return (
@@ -46,12 +58,9 @@ function ProductPage() {
       <ImageWrapper width={220} height={220}>
         <img src={data.image} alt={data.title} style={{ height: "100%" }} />
       </ImageWrapper>
-
-      {showAlert &&
-        createPortal(
-          <Alert text={"added to cart"} />,
-          document.getElementById("root")
-        )}
+      {alerts.map((item) => (
+        <Alert text={item.message} key={item.id} />
+      ))}
     </Container>
   );
 }

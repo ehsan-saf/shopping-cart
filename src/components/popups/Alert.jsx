@@ -42,7 +42,6 @@ const Container = styled.div`
   color: hsl(0, 0%, 96%);
   background-color: #10b981;
 
-  opacity: ${(p) => (p.show ? "0" : "1")};
   transform: translateY(${(p) => (p.show ? "15px" : "0")});
 
   animation: ${(p) => (p.show ? "fade-in" : "fade-out")} 0.4s 1 forwards;

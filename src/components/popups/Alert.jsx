@@ -12,7 +12,7 @@ function Alert({ text }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setShow(false);
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, []);

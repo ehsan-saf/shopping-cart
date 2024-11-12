@@ -1,17 +1,19 @@
 import styled from "styled-components";
 import { useContext, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import { useLocation } from "react-router-dom";
+
 import { COLORS } from "../../Constants/colors";
+
 import CartContext from "../../contexts/cartContext";
+import alertContext from "../../contexts/AlertContext";
+
 import Alert from "../popups/Alert";
 import ImageWrapper from "../tools/ImageWrapper";
 
 function ProductPage() {
   const location = useLocation();
   const { cartItems, setCartItems } = useContext(CartContext);
-
-  const [alerts, setAlerts] = useState([]);
+  const { alerts, setAlerts } = useContext(alertContext);
 
   const data = location.state;
 
@@ -58,9 +60,6 @@ function ProductPage() {
       <ImageWrapper width={220} height={220}>
         <img src={data.image} alt={data.title} style={{ height: "100%" }} />
       </ImageWrapper>
-      {alerts.map((item) => (
-        <Alert text={item.message} key={item.id} />
-      ))}
     </Container>
   );
 }

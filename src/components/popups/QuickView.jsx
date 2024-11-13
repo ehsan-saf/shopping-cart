@@ -97,7 +97,6 @@ const Container = styled.div`
   border-radius: 10px 0 0 10px;
 
   padding: 10px;
-  overflow-y: auto;
 
   transform: translateX(${(el) => (el.open ? "0%" : "100%")});
 
@@ -122,6 +121,8 @@ const CloseButton = styled.button`
 const List = styled.div`
   display: flex;
   flex-direction: column;
+
+  overflow-y: auto;
 `;
 
 const ItemContainer = styled.div`

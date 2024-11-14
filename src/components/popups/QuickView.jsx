@@ -52,7 +52,9 @@ function QuickView({ open, onToggle }) {
           ))}
         </List>
         <Total>Total ${totalPrice}</Total>
-        <CheckoutButton to={"shoppingcart"}>Go to checkout</CheckoutButton>
+        <CheckoutButton to={"shoppingcart"} onClick={onToggle}>
+          Go to checkout
+        </CheckoutButton>
       </Container>
       <Background open={open} id="page-bg" />
     </>

@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     const closeQuickview = function (e) {
-      console.log(e);
       if (e.target.id === "page-bg") {
         setIsOpen(false);
       }

@@ -41,6 +41,9 @@ function ShoppingCart() {
           <Item info={item} key={item.id} />
         ))}
       </List>
+      {cartItems.length <= 0 && (
+        <h2 style={{ alignSelf: "center" }}>Your cart is empty 😔</h2>
+      )}
       <div
         style={{
           display: "flex",

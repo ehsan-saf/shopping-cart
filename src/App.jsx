@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
@@ -12,6 +12,21 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
 
   const [alerts, setAlerts] = useState([]);
+
+  useEffect(() => {
+    const closeQuickview = function (e) {
+      console.log(e);
+      if (e.target.id === "page-bg") {
+        setIsOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", closeQuickview);
+
+    return () => {
+      document.body.removeEventListener("click", closeQuickview);
+    };
+  }, []);
 
   function toggleQuickView() {
     setIsOpen(!isOpen);

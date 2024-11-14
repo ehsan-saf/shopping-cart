@@ -54,7 +54,7 @@ function QuickView({ open, onToggle }) {
         <Total>Total ${totalPrice}</Total>
         <CheckoutButton to={"shoppingcart"}>Go to checkout</CheckoutButton>
       </Container>
-      <Background open={open} />
+      <Background open={open} id="page-bg" />
     </>
   );
 }

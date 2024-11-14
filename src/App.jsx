@@ -23,9 +23,11 @@ function App() {
           <QuickView open={isOpen} onToggle={toggleQuickView} />
           <Header onToggle={toggleQuickView} />
           <Outlet />
-          {alerts.map((item) => (
-            <Alert text={item.message} key={item.id} />
-          ))}
+          <AlertsList>
+            {alerts.map((item) => (
+              <Alert text={item.message} key={item.id} />
+            ))}
+          </AlertsList>
         </Container>
       </CartContext.Provider>
     </AlertContext.Provider>
@@ -36,4 +38,14 @@ export default App;
 
 const Container = styled.div`
   padding: 10px 30px;
+`;
+
+const AlertsList = styled.div`
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `;

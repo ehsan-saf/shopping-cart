@@ -54,6 +54,7 @@ function QuickView({ open, onToggle }) {
         <Total>Total ${totalPrice}</Total>
         <CheckoutButton to={"shoppingcart"}>Go to checkout</CheckoutButton>
       </Container>
+      <Background open={open} />
     </>
   );
 }
@@ -65,17 +66,17 @@ QuickView.propTypes = {
   onToggle: PropTypes.func,
 };
 
-// const Background = styled.div`
-//   display: ${(el) => (el.open ? "block" : "none")};
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100svw;
-//   height: 100svh;
-//   opacity: 0.9;
-//   background-color: ${COLORS.Modal_Bg};
-//   filter: blur(10px);
-// `;
+const Background = styled.div`
+  display: ${(el) => (el.open ? "block" : "none")};
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100svw;
+  height: 100svh;
+  opacity: 0.8;
+  background-color: ${COLORS.Modal_Bg};
+`;
 
 const Container = styled.div`
   position: fixed;

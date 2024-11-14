@@ -29,7 +29,7 @@ function ProductPage() {
       setAlerts((prevAlerts) =>
         prevAlerts.filter((alert) => alert.id !== newAlert.id)
       );
-    }, 3500);
+    }, 2500);
   }
 
   function addToCart(product) {

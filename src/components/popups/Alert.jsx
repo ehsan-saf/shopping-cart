@@ -27,10 +27,6 @@ function Alert({ text }) {
 export default Alert;
 
 const Container = styled.div`
-  position: fixed;
-  right: 0;
-  left: 0;
-  bottom: 30px;
   margin: 0 auto;
   width: 170px;
   height: 50px;
@@ -42,7 +38,7 @@ const Container = styled.div`
   color: hsl(0, 0%, 96%);
   background-color: #10b981;
 
-  transform: translateY(${(p) => (p.show ? "15px" : "0")});
+  /* transform: translateY(${(p) => (p.show ? "5px" : "0")}); */
 
   animation: ${(p) => (p.show ? "fade-in" : "fade-out")} 0.4s 1 forwards;
 
@@ -56,7 +52,7 @@ const Container = styled.div`
   @keyframes fade-out {
     100% {
       opacity: 0;
-      transform: translateY(15px);
+      transform: translateY(30px);
     }
   }
 `;

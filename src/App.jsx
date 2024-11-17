@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import QuickView from "./components/popups/QuickView";
+import AlertContext from "./contexts/alertContext";
 import CartContext from "./contexts/cartContext";
-import AlertContext from "./contexts/AlertContext";
 import Alert from "./components/popups/Alert";
 
 function App() {

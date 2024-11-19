@@ -1,19 +1,18 @@
 import styled from "styled-components";
-import { useContext, useRef, useState } from "react";
+import { useContext } from "react";
 import { useLocation } from "react-router-dom";
 
 import { COLORS } from "../../Constants/colors";
 
 import CartContext from "../../contexts/cartContext";
-import alertContext from "../../contexts/AlertContext";
+import AlertContext from "../../contexts/alertContext";
 
-import Alert from "../popups/Alert";
 import ImageWrapper from "../tools/ImageWrapper";
 
 function ProductPage() {
   const location = useLocation();
   const { cartItems, setCartItems } = useContext(CartContext);
-  const { alerts, setAlerts } = useContext(alertContext);
+  const { alerts, setAlerts } = useContext(AlertContext);
 
   const data = location.state;
 
